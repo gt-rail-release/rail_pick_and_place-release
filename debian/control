@@ -1,0 +1,12 @@
+Source: ros-indigo-rail-pick-and-place-wrapper
+Section: misc
+Priority: extra
+Maintainer: David Kent <davidkent@wpi.edu>
+Build-Depends: debhelper (>= 9.0.0), ros-indigo-actionlib, ros-indigo-catkin, ros-indigo-message-generation, ros-indigo-rail-pick-and-place-msgs, ros-indigo-rail-recognition, ros-indigo-rail-segmentation, ros-indigo-roscpp, ros-indigo-sensor-msgs, ros-indigo-wpi-jaco-msgs
+Homepage: http://ros.org/wiki/rail_pick_and_place_wrapper
+Standards-Version: 3.9.2
+
+Package: ros-indigo-rail-pick-and-place-wrapper
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-indigo-actionlib, ros-indigo-message-runtime, ros-indigo-rail-pick-and-place-msgs, ros-indigo-rail-recognition, ros-indigo-rail-segmentation, ros-indigo-roscpp, ros-indigo-sensor-msgs, ros-indigo-wpi-jaco-msgs
+Description: High-level Interface for Pick and Place Functionality
