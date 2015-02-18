@@ -1,0 +1,16 @@
+ros-indigo-rail-grasping (0.0.2-0saucy) saucy; urgency=high
+
+  * catkin cleanup
+  * Updated metapackage
+  * Grasp collection, model building, basic recognition and grasping
+  * Contributors: David Kent, Russell Toris
+
+ -- David Kent <davidkent@wpi.edu>  Wed, 18 Feb 2015 05:00:00 -0000
+
+ros-indigo-rail-grasping (0.0.1-0saucy) saucy; urgency=high
+
+
+
+ -- David Kent <davidkent@wpi.edu>  Wed, 22 Oct 2014 04:00:00 -0000
+
+
