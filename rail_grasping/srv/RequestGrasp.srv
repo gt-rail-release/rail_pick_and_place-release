@@ -1,4 +1,0 @@
-geometry_msgs/Pose graspPose
----
-bool result
-bool earlyFailureDetected
