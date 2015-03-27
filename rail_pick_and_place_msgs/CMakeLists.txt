@@ -4,11 +4,24 @@ project(rail_pick_and_place_msgs)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED COMPONENTS message_generation geometry_msgs sensor_msgs)
+find_package(catkin REQUIRED COMPONENTS
+  actionlib_msgs
+  geometry_msgs
+  message_generation
+  rail_manipulation_msgs
+  sensor_msgs
+)
 
 ################################################
 ## Declare ROS messages, services and actions ##
 ################################################
+
+## Generate messages in the 'msg' folder
+add_message_files(FILES
+  GraspDemonstration.msg
+  GraspModel.msg
+  GraspWithSuccessRate.msg
+)
 
 ## Generate services in the 'srv' folder
 add_service_files(FILES
@@ -18,8 +31,17 @@ add_service_files(FILES
   RecognizeAndGrasp.srv
 )
 
+## Generate actions in the 'action' folder
+add_action_files(FILES
+  GenerateModels.action
+  GraspAndStore.action
+  RetrieveGraspDemonstration.action
+)
+
 generate_messages(DEPENDENCIES
+  actionlib_msgs
   geometry_msgs
+  rail_manipulation_msgs
   sensor_msgs
 )
 
