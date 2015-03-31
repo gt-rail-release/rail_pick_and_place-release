@@ -1,0 +1,11 @@
+# Define the goal
+uint32[] grasp_demonstration_ids
+uint32[] grasp_model_ids
+uint32 max_model_size
+---
+# Define the result
+int32[] unusedModelIds
+uint32 newModelsTotal
+---
+# Define feedback message
+string message
