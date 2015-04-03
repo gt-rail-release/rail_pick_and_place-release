@@ -1,6 +1,9 @@
+// RAIL Recognition
+#include "rail_recognition/ObjectRecognitionListener.h"
+#include "rail_recognition/PointCloudRecognizer.h"
+
+// ROS
 #include <geometry_msgs/PoseArray.h>
-#include <rail_recognition/ObjectRecognitionListener.h>
-#include <rail_recognition/PointCloudRecognizer.h>
 
 using namespace std;
 using namespace rail::pick_and_place;
@@ -58,13 +61,14 @@ bool ObjectRecognitionListener::okay() const
   return okay_;
 }
 
-void ObjectRecognitionListener::segmentedObjectsCallback(const rail_manipulation_msgs::SegmentedObjectList &objects)
+void ObjectRecognitionListener::segmentedObjectsCallback(
+    const rail_manipulation_msgs::SegmentedObjectList::ConstPtr &objects)
 {
-  ROS_INFO("Received %li segmented objects.", objects.objects.size());
+  ROS_INFO("Received %li segmented objects.", objects->objects.size());
 
   // check against the old list to prevent throwing out data
-  rail_manipulation_msgs::SegmentedObjectList new_list;
-  for (size_t i = 0; i < objects.objects.size(); i++)
+  vector<rail_manipulation_msgs::SegmentedObject> new_list;
+  for (size_t i = 0; i < objects->objects.size(); i++)
   {
     bool matched = false;
     // search for a match on the point cloud
@@ -72,11 +76,11 @@ void ObjectRecognitionListener::segmentedObjectsCallback(const rail_manipulation
     {
       // only do a compare if we previously recognized the object
       if (object_list_.objects[j].recognized &&
-          this->comparePointClouds(objects.objects[i].point_cloud, object_list_.objects[j].point_cloud))
+          this->comparePointClouds(objects->objects[i].point_cloud, object_list_.objects[j].point_cloud))
       {
         ROS_INFO("Found a match from previously recognized objects.");
         matched = true;
-        new_list.objects.push_back(object_list_.objects[j]);
+        new_list.push_back(object_list_.objects[j]);
         break;
       }
     }
@@ -84,12 +88,12 @@ void ObjectRecognitionListener::segmentedObjectsCallback(const rail_manipulation
     // check if we didn't match
     if (!matched)
     {
-      new_list.objects.push_back(objects.objects[i]);
+      new_list.push_back(objects->objects[i]);
     }
   }
 
   // store the list
-  object_list_ = new_list;
+  object_list_.objects = new_list;
 
   // run recognition
   ROS_INFO("Running recognition...");
@@ -132,22 +136,6 @@ void ObjectRecognitionListener::segmentedObjectsCallback(const rail_manipulation
 bool ObjectRecognitionListener::comparePointClouds(const sensor_msgs::PointCloud2 &pc1,
     const sensor_msgs::PointCloud2 &pc2) const
 {
-  // check the size first
-  if (pc1.data.size() != pc2.data.size())
-  {
-    return false;
-  }
-
-  // check each data point
-  for (size_t i = 0; i < pc1.data.size(); i++)
-  {
-    if (pc1.data[i] != pc2.data[i])
-    {
-      // break early
-      return false;
-    }
-  }
-
-  // all checks passed
-  return true;
+  // check the size first then compare
+  return (pc1.data.size() == pc2.data.size()) && (pc1.data == pc1.data);
 }
