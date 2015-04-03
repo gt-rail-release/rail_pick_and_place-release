@@ -23,19 +23,12 @@ add_message_files(FILES
   GraspWithSuccessRate.msg
 )
 
-## Generate services in the 'srv' folder
-add_service_files(FILES
-  GraspRecognized.srv
-  PickupObject.srv
-  PickupSegmentedObject.srv
-  RecognizeAndGrasp.srv
-)
-
 ## Generate actions in the 'action' folder
 add_action_files(FILES
   GenerateModels.action
   GraspAndStore.action
   RetrieveGraspDemonstration.action
+  RetrieveGraspModel.action
 )
 
 generate_messages(DEPENDENCIES
