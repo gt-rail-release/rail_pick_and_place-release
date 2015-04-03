@@ -11,7 +11,8 @@
  * \date March 11, 2015
  */
 
-#include <graspdb/GraspDemonstration.h>
+// graspdb
+#include "graspdb/GraspDemonstration.h"
 
 using namespace std;
 using namespace rail::pick_and_place::graspdb;
@@ -51,6 +52,11 @@ const Pose &GraspDemonstration::getGraspPose() const
   return grasp_pose_;
 }
 
+Pose &GraspDemonstration::getGraspPose()
+{
+  return grasp_pose_;
+}
+
 void GraspDemonstration::setGraspPose(const Pose &grasp_pose)
 {
   grasp_pose_ = grasp_pose;
@@ -67,6 +73,11 @@ void GraspDemonstration::setEefFrameID(const string &eef_frame_id)
 }
 
 const sensor_msgs::PointCloud2 &GraspDemonstration::getPointCloud() const
+{
+  return point_cloud_;
+}
+
+sensor_msgs::PointCloud2 &GraspDemonstration::getPointCloud()
 {
   return point_cloud_;
 }
