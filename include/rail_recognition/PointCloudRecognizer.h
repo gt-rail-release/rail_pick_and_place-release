@@ -3,8 +3,10 @@
 
 // ROS
 #include <graspdb/graspdb.h>
-#include <rail_recognition/Model.h>
 #include <sensor_msgs/PointCloud.h>
+#include <ros/ros.h>
+#include <rail_manipulation_msgs/SegmentedObject.h>
+#include <tf2/LinearMath/Transform.h>
 
 // PCL
 #include <pcl/point_cloud.h>
@@ -35,13 +37,7 @@ public:
       const std::vector<graspdb::GraspModel> &candidates) const;
 
 private:
-  /**
-  * Filters point cloud outliers if they have less neighbors than the neighbor threshold within a given radius
-  * @param cloudPtr pointer to the point cloud to be filtered
-  */
-  void filterPointCloudOutliers(pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloudPtr) const;
 
-  void translateToOrigin(pcl::PointCloud<pcl::PointXYZRGB>::Ptr pc, const geometry_msgs::Point &centroid) const;
 
   /**
   * Determine a score for the registration of two point clouds
@@ -50,16 +46,7 @@ private:
   * @return score representing the success of the registration, calculated as a weighted combination of color and shape metrics
   */
   double scoreRegistration(pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr candidate,
-      pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr object, Eigen::Matrix4f &icp_tf, bool &icp_swapped) const;
-
-  /**
-  * Calculate a metric for how successful the registration was based on distance error
-  * @param baseCloudPtr pointer to the point cloud to which the target will be transformed
-  * @param targetCloudPtr pointer to the point cloud that will be transformed to the base cloud
-  * @return a score representing the success of the registration
-  */
-  double calculateRegistrationMetricDistanceError(pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr base,
-      pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr target) const;
+      pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr object, tf2::Transform &tf_icp, bool &icp_swapped) const;
 
   /**
   * Calculate a metric for how successful the registration was based on overlap
@@ -70,10 +57,8 @@ private:
   double calculateRegistrationMetricOverlap(pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr base,
       pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr target) const;
 
-  void transformGrasps(const Eigen::Matrix4f &icp_transform, const bool swapped,
-      const geometry_msgs::Point &centroid,
-      const std::vector<rail_pick_and_place_msgs::GraspWithSuccessRate> &candidate_grasps,
-      std::vector<rail_pick_and_place_msgs::GraspWithSuccessRate> &grasps) const;
+  void computeGraspList(const tf2::Transform &tf_icp, const bool icp_swapped, const geometry_msgs::Point &centroid,
+      const std::vector<graspdb::Grasp> &candidate_grasps, std::vector<graspdb::Grasp> &grasps) const;
 };
 
 }
