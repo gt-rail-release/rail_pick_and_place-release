@@ -36,13 +36,13 @@ public:
   bool okay() const;
 
 private:
-  void segmentedObjectsCallback(const rail_manipulation_msgs::SegmentedObjectList &objects);
+  void segmentedObjectsCallback(const rail_manipulation_msgs::SegmentedObjectList::ConstPtr &objects);
 
   bool comparePointClouds(const sensor_msgs::PointCloud2 &pc1, const sensor_msgs::PointCloud2 &pc2) const;
 
   /*! The debug and okay check flags. */
   bool debug_, okay_;
-  /* The grasp database connection. */
+  /*! The grasp database connection. */
   graspdb::Client *graspdb_;
 
   /*! The public and private ROS node handles. */
