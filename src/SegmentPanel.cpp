@@ -13,12 +13,11 @@
 #include <pluginlib/class_list_macros.h>
 #include <std_srvs/Empty.h>
 
-using namespace std;
+// Qt
+#include <QGridLayout>
 
-namespace rail
-{
-namespace pick_and_place
-{
+using namespace std;
+using namespace rail::pick_and_place;
 
 SegmentPanel::SegmentPanel(QWidget *parent) : rviz::Panel(parent)
 {
@@ -31,20 +30,22 @@ SegmentPanel::SegmentPanel(QWidget *parent) : rviz::Panel(parent)
   // setup the segmentation service
   segment_srv_ = node_.serviceClient<std_srvs::Empty>(segment_service);
 
-  // final layout
-  QVBoxLayout *layout = new QVBoxLayout();
-
   // main segmentation button
   segment_button_ = new QPushButton("Segment");
-  layout->addWidget(segment_button_);
 
   // service label
   string service_label_text = "Calling on " + segment_service;
   QLabel *segment_label = new QLabel(service_label_text.c_str());
-  layout->addWidget(segment_label);
+  segment_label->setAlignment(Qt::AlignCenter);
 
   // service feedback
   segment_status_ = new QLabel("Ready to segment.");
+  segment_status_->setAlignment(Qt::AlignCenter);
+
+  // build the final layout
+  QVBoxLayout *layout = new QVBoxLayout();
+  layout->addWidget(segment_button_);
+  layout->addWidget(segment_label);
   layout->addWidget(segment_status_);
 
   // connect the segmentation button
@@ -93,8 +94,5 @@ void SegmentPanel::load(const rviz::Config &config)
   rviz::Panel::load(config);
 }
 
-}
-}
-
-// Tell pluginlib about this class (must outside of any namespace scope)
+// tell pluginlib about this class (must outside of any namespace scope)
 PLUGINLIB_EXPORT_CLASS(rail::pick_and_place::SegmentPanel, rviz::Panel)
