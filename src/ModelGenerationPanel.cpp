@@ -1,9 +1,12 @@
 /*!
- * \ModelGenerationPanel.cpp
- * \brief Rviz plugin for generating object recognition/grasping models.
+ * \file ModelGenerationPanel.cpp
+ * \brief RViz plugin for model generation.
+ *
+ * The model generation panel allows for model generation requests to be made using a selection of grasps and models.
  *
  * \author David Kent, WPI - davidkent@wpi.edu
- * \date March 2, 2015
+ * \author Russell Toris, WPI - rctoris@wpi.edu
+ * \date April 8, 2015
  */
 
 // RAIL Pick and Place Tools
@@ -190,11 +193,8 @@ void ModelGenerationPanel::deselectAll()
 
 void ModelGenerationPanel::modelSelectionChanged()
 {
-  // check if the user has selected a valid demonstration or model
-  QList<QListWidgetItem *> selected_items = models_list_->selectedItems();
-
-  // there should only be one selected
-  if (selected_items.size() == 1 && selected_items[0]->flags() & Qt::ItemIsUserCheckable)
+  // check if there is an item selected
+  if (models_list_->currentItem() != NULL && models_list_->currentItem()->flags() & Qt::ItemIsUserCheckable)
   {
     // grab the current item
     string selected_item = models_list_->currentItem()->text().toStdString();
@@ -374,7 +374,7 @@ void ModelGenerationPanel::doneCallback(const actionlib::SimpleClientGoalState &
       {
         // add to the status message
         ss << result->new_model_ids[i];
-        if (i < result->new_model_ids.size() - 2)
+        if ((int) i <= ((int) result->new_model_ids.size()) - 2)
         {
           ss << ", ";
         }
