@@ -1,9 +1,12 @@
 /*!
- * \GraspCollectionPanel.cpp
- * \brief Rviz plugin for collecting grasp data.
+ * \file GraspCollectionPanel.cpp
+ * \brief RViz plugin for grasp collection.
+ *
+ * The grasp collection panel allows for calling the grasp and store action server with the associated settings.
  *
  * \author David Kent, WPI - davidkent@wpi.edu
- * \date March 10, 2015
+ * \author Russell Toris, WPI - rctoris@wpi.edu
+ * \date April 6, 2015
  */
 
 // RAIL Pick and Place Tools
@@ -13,9 +16,7 @@
 #include <pluginlib/class_list_macros.h>
 
 // Qt
-#include <QGridLayout>
-#include <QHBoxLayout>
-#include <QVBoxLayout>
+#include <QBoxLayout>
 
 using namespace std;
 using namespace rail::pick_and_place;
