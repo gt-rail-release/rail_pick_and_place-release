@@ -1,21 +1,22 @@
 /*!
- * \file object_recognizer.cpp
- * \brief The object recognizer node.
+ * \file metric_trainer.cpp
+ * \brief The metric trainer node.
  *
- * The object recognizer sets up an action server that allows the recognition of a single segmented object.
+ * The metric trainer allows for generating data sets for training registration metric decision trees. An action server
+ * is used to provide the object name and files are dumped to "registration_metrics.txt".
  *
- * \author David Kent, WPI - rctoris@wpi.edu
  * \author Russell Toris, WPI - rctoris@wpi.edu
+ * \author David Kent, WPI - rctoris@wpi.edu
  * \date April 8, 2015
  */
 
-#include "rail_recognition/ObjectRecognizer.h"
+#include "rail_recognition/MetricTrainer.h"
 
 using namespace std;
 using namespace rail::pick_and_place;
 
 /*!
- * Creates and runs the object_recognizer node.
+ * Creates and runs the metric_trainer node.
  *
  * \param argc argument count that is passed to ros::init.
  * \param argv arguments that are passed to ros::init.
@@ -24,10 +25,10 @@ using namespace rail::pick_and_place;
 int main(int argc, char **argv)
 {
   // initialize ROS and the node
-  ros::init(argc, argv, "object_recognizer");
-  ObjectRecognizer recognizer;
+  ros::init(argc, argv, "metric_trainer");
+  MetricTrainer mt;
   // check if everything started okay
-  if (recognizer.okay())
+  if (mt.okay())
   {
     ros::spin();
     return EXIT_SUCCESS;

@@ -1,9 +1,12 @@
 /*!
- * \VisionPanel.cpp
- * \brief Rviz plugin for point cloud segmentation and recognition.
+ * \file SegmentPanel.cpp
+ * \brief RViz plugin for point cloud segmentation.
+ *
+ * The segmentation panel allows for sending segmentation service requests.
  *
  * \author David Kent, WPI - davidkent@wpi.edu
- * \date March 11, 2015
+ * \author Russell Toris, WPI - rctoris@wpi.edu
+ * \date April 6, 2015
  */
 
 // RAIL Pick and Place Tools
@@ -14,7 +17,7 @@
 #include <std_srvs/Empty.h>
 
 // Qt
-#include <QGridLayout>
+#include <QBoxLayout>
 
 using namespace std;
 using namespace rail::pick_and_place;
