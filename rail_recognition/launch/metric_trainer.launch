@@ -1,6 +1,6 @@
 <!--
    Author: Russell Toris, Worcester Polytechnic Institute
-  Version: April 1, 2015
+  Version: April 7, 2015
 -->
 
 <launch>
@@ -11,9 +11,6 @@
   <arg name="password" default="" />
   <arg name="db" default="graspdb" />
 
-  <!-- Model Generator Params -->
-  <arg name="debug" default="false" />
-
   <!-- Set Global Params -->
   <param name="/graspdb/host" type="str" value="$(arg host)" />
   <param name="/graspdb/port" type="int" value="$(arg port)" />
@@ -21,7 +18,5 @@
   <param name="/graspdb/password" type="str" value="$(arg password)" />
   <param name="/graspdb/db" type="str" value="$(arg db)" />
 
-  <node pkg="rail_recognition" name="model_generator" type="model_generator" output="screen" >
-    <param name="debug" value="$(arg debug)" />
-  </node>
+  <node pkg="rail_recognition" name="metric_trainer" type="metric_trainer" output="screen" />
 </launch>
