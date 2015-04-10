@@ -1,3 +1,15 @@
+/*!
+ * \file ModelGenerator.cpp
+ * \brief The grasp model generator node object.
+ *
+ * The grasp model generator allows for generating graspdb models based on registration criteria. An action server is
+ * used to provide the model/grasp demonstration IDs to use during registration.
+ *
+ * \author David Kent, WPI - rctoris@wpi.edu
+ * \author Russell Toris, WPI - rctoris@wpi.edu
+ * \date April 6, 2015
+ */
+
 // RAIL Recognition
 #include "rail_recognition/ModelGenerator.h"
 #include "rail_recognition/PointCloudMetrics.h"
@@ -114,7 +126,7 @@ void ModelGenerator::generateModelsCallback(const rail_pick_and_place_msgs::Gene
   }
 
   // generate and store the models
-  feedback.message = "Registering models, please wait...";
+  feedback.message = "Registering models...";
   as_.publishFeedback(feedback);
   this->generateAndStoreModels(grasp_models, goal->max_model_size, result.new_model_ids);
 
@@ -123,91 +135,155 @@ void ModelGenerator::generateModelsCallback(const rail_pick_and_place_msgs::Gene
 }
 
 void ModelGenerator::generateAndStoreModels(vector<PCLGraspModel> &grasp_models, const int max_model_size,
-    vector<uint32_t> &new_model_ids) const
+    vector<uint32_t> &new_model_ids)
 {
-  // filter each point cloud and move to the origin
+  rail_pick_and_place_msgs::GenerateModelsFeedback feedback;
+
+  // filter each point cloud, move to the origin, set unique IDs, and ensure they are flagged as original
+  feedback.message = "Filtinering point clouds...";
+  as_.publishFeedback(feedback);
+  uint32_t id_counter = 0;
   for (size_t i = 0; i < grasp_models.size(); i++)
   {
     // filter the resulting PC
     point_cloud_metrics::filterPointCloudOutliers(grasp_models[i].getPCLPointCloud());
     point_cloud_metrics::transformToOrigin(grasp_models[i].getPCLPointCloud(), grasp_models[i].getGrasps());
+    // set a unique ID
+    grasp_models[i].setID(id_counter++);
+    // flag as an original model
+    grasp_models[i].setOriginal(true);
+  }
+
+  // create the initial pairings between all vertices
+  vector<pair<uint32_t, uint32_t> > edges;
+  for (size_t i = 0; i < grasp_models.size() - 1; i++)
+  {
+    for (size_t j = i + 1; j < grasp_models.size(); j++)
+    {
+      // add the pairing as an edge (use the larger as the first)
+      pair<uint32_t, uint32_t> edge;
+      if (grasp_models[i].getPCLPointCloud()->size() > grasp_models[j].getPCLPointCloud()->size())
+      {
+        edge.first = grasp_models[i].getID();
+        edge.second = grasp_models[j].getID();
+      } else
+      {
+        edge.first = grasp_models[j].getID();
+        edge.second = grasp_models[i].getID();
+      }
+      edges.push_back(edge);
+    }
   }
 
   // attempt to pair models
-  ROS_INFO("Searching graph for model matches...");
-  bool finished = false;
-  while (!finished)
+  feedback.message = "Searching graph for valid registrations...";
+  as_.publishFeedback(feedback);
+  ROS_INFO("%s", feedback.message.c_str());
+  while (!edges.empty())
   {
-    // default to finished and update as needed
-    finished = true;
-    // only continue if we have two models to compare
-    if (grasp_models.size() > 1)
+    // randomly select the element to increase variability
+    int rand_index = rand() % edges.size();
+    pair<uint32_t, uint32_t> edge = edges[rand_index];
+    edges.erase(edges.begin() + rand_index);
+
+    // search for the base and target models
+    size_t base_index, target_index;
+    for (size_t i = 0; i < grasp_models.size(); i++)
     {
-      // TODO randomly order the elements to increase variability
-      //random_shuffle(grasp_models.begin(), grasp_models.end());
-
-      // use int to prevent rollover and start the matching process by starting at the end
-      for (int i = (int) grasp_models.size() - 1; i >= 1; i--)
+      if (grasp_models[i].getID() == edge.first)
       {
-        // the size of the model list can change inside the inner for loop
-        if (i < grasp_models.size())
+        base_index = i;
+      } else if (grasp_models[i].getID() == edge.second)
+      {
+        target_index = i;
+      }
+    }
+
+    // keep track of the base and the target models
+    PCLGraspModel &base = grasp_models[base_index];
+    PCLGraspModel &target = grasp_models[target_index];
+
+    // used in feedback messages
+    stringstream ss;
+    ss << base.getID() << "-" << target.getID();
+    string pair_str = ss.str();
+
+    feedback.message = "Checking pair " + pair_str + "...";
+    as_.publishFeedback(feedback);
+
+    // check if the maximum size would be allowed
+    if (base.getNumGrasps() + target.getNumGrasps() > max_model_size)
+    {
+      feedback.message = "Skipping pair " + pair_str + "as a merge would exceed the maximum model size.";
+      as_.publishFeedback(feedback);
+      ROS_WARN("%s", feedback.message.c_str());
+    } else
+    {
+      // check if the registration passes
+      PCLGraspModel result;
+      if (this->registrationCheck(base, target, result))
+      {
+        feedback.message = "Registration match found for pair " + pair_str + ".";
+        as_.publishFeedback(feedback);
+        ROS_INFO("%s", feedback.message.c_str());
+
+        // remove any edges containing these nodes
+        for (int i = (int) edges.size() - 1; i >= 0; i--)
         {
-          // use int to prevent rollover and start from the second to last
-          for (int j = i - 1; j >= 0; j--)
+          if (edges[i].first == base.getID() || edges[i].second == base.getID() || edges[i].first == target.getID()
+              || edges[i].second == target.getID())
           {
-            // keep track of the base and the target point clouds for use in ICP
-            const PCLGraspModel &base = grasp_models[i];
-            const PCLGraspModel &target = grasp_models[j];
-
-            // check if the maximum size would be allowed
-            if (base.getNumGrasps() + target.getNumGrasps() > max_model_size)
-            {
-              ROS_INFO("Skipping pair %d-%d as a merge would exceed the maximum model size.", i, j);
-            }
-            else
-            {
-              // check if the registration passes
-              PCLGraspModel result;
-              if (this->registrationCheck(base, target, result))
-              {
-                ROS_INFO("Registration match found for pair %d-%d.", i, j);
-                // remove both models from the global list
-                grasp_models.erase(grasp_models.begin() + i);
-                grasp_models.erase(grasp_models.begin() + j);
-                // add the new model
-                grasp_models.push_back(result);
-
-                // check if we are running debug
-                if (debug_)
-                {
-                  // generate the pose array
-                  geometry_msgs::PoseArray poses;
-                  for (size_t i = 0; i < result.getNumGrasps(); i++)
-                  {
-                    const graspdb::Pose &pose = result.getGrasp(i).getGraspPose();
-                    poses.header.frame_id = pose.getRobotFixedFrameID();
-                    poses.poses.push_back(pose.toROSPoseMessage());
-                  }
-                  // publish the poses and the resulting merged point cloud
-                  debug_poses_pub_.publish(poses);
-                  debug_pc_pub_.publish(*result.getPCLPointCloud());
-                }
-
-                // move down the list since we now have a match
-                i--;
-                finished = false;
-              }
-            }
+            edges.erase(edges.begin() + i);
           }
+        }
+
+        // remove both models from the global list
+        for (int i = (int) grasp_models.size() - 1; i >= 0; i--)
+        {
+          if (grasp_models[i].getID() == base.getID() || grasp_models[i].getID() == target.getID())
+          {
+            grasp_models.erase(grasp_models.begin() + i);
+          }
+        }
+
+        // set a unique ID
+        result.setID(id_counter++);
+
+        // add a new edges with this new model
+        for (size_t i = 0; i < grasp_models.size(); i++)
+        {
+          pair<uint32_t, uint32_t> edge(result.getID(), grasp_models[i].getID());
+          edges.push_back(edge);
+        }
+
+        // add the new model
+        grasp_models.push_back(result);
+
+        // check if we are running debug
+        if (debug_)
+        {
+          // generate the pose array
+          geometry_msgs::PoseArray poses;
+          for (size_t i = 0; i < result.getNumGrasps(); i++)
+          {
+            const graspdb::Pose &pose = result.getGrasp(i).getGraspPose();
+            poses.header.frame_id = pose.getRobotFixedFrameID();
+            poses.poses.push_back(pose.toROSPoseMessage());
+          }
+          // publish the poses and the resulting merged point cloud
+          debug_poses_pub_.publish(poses);
+          debug_pc_pub_.publish(*result.getPCLPointCloud());
         }
       }
     }
   }
 
-  // remove any single-grasp (unmerged) models and existing models and save the rest
+  // remove any original (unmerged) models and save the rest
+  feedback.message = "Saving new models...";
+  as_.publishFeedback(feedback);
   for (int i = ((int) grasp_models.size()) - 1; i >= 0; i--)
   {
-    if (grasp_models[i].getNumGrasps() <= 1 || grasp_models[i].getID() != graspdb::GraspModel::UNSET_ID)
+    if (grasp_models[i].isOriginal())
     {
       grasp_models.erase(grasp_models.begin() + i);
     } else
@@ -225,7 +301,6 @@ void ModelGenerator::generateAndStoreModels(vector<PCLGraspModel> &grasp_models,
       }
     }
   }
-  ROS_INFO("Point cloud merging resulted in %lu models.", grasp_models.size());
 }
 
 bool ModelGenerator::registrationCheck(const PCLGraspModel &base, const PCLGraspModel &target,
