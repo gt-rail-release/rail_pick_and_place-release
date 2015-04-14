@@ -2,6 +2,21 @@
 Changelog for package graspdb
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.1.3 (2015-04-14)
+------------------
+* removed metric pre-compute
+* stores metrics
+* added segmented images to the database
+* Contributors: Russell Toris
+
+Forthcoming
+-----------
+* changelog updated
+* removed metric pre-compute
+* stores metrics
+* added segmented images to the database
+* Contributors: Russell Toris
+
 1.1.2 (2015-04-10)
 ------------------
 * changed to upper case checking for names

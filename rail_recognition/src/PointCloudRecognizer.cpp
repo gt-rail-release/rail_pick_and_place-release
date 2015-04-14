@@ -26,7 +26,7 @@ PointCloudRecognizer::PointCloudRecognizer()
 }
 
 bool PointCloudRecognizer::recognizeObject(rail_manipulation_msgs::SegmentedObject &object,
-    const vector<graspdb::GraspModel> &candidates) const
+    const vector<PCLGraspModel> &candidates) const
 {
   // make sure we have some candidates
   if (candidates.empty())
@@ -45,6 +45,10 @@ bool PointCloudRecognizer::recognizeObject(rail_manipulation_msgs::SegmentedObje
   point_cloud_metrics::rosPointCloud2ToPCLPointCloud(object.point_cloud, object_point_cloud);
 
   // pre-process input cloud
+  double object_r, object_g, object_b, object_std_dev_r, object_std_dev_g, object_std_dev_b;
+  point_cloud_metrics::calculateAvgColors(object_point_cloud, object_r, object_g, object_b);
+  point_cloud_metrics::calculateStdDevColors(object_point_cloud, object_std_dev_r, object_std_dev_g,
+                                             object_std_dev_b, object_r, object_g, object_b);
   point_cloud_metrics::filterPointCloudOutliers(object_point_cloud);
   point_cloud_metrics::transformToOrigin(object_point_cloud, object.centroid);
 
@@ -54,20 +58,24 @@ bool PointCloudRecognizer::recognizeObject(rail_manipulation_msgs::SegmentedObje
   tf2::Transform min_icp_tf;
   for (size_t i = 0; i < candidates.size(); i++)
   {
-    // quick check for a valid point cloud
-    if (candidates[i].getPointCloud().data.size() > 0)
-    {
-      // convert the candidate point cloud to a PCL point cloud
-      pcl::PointCloud<pcl::PointXYZRGB>::Ptr candidate_point_cloud(new pcl::PointCloud<pcl::PointXYZRGB>);
-      point_cloud_metrics::rosPointCloud2ToPCLPointCloud(candidates[i].getPointCloud(), candidate_point_cloud);
+    const pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr &candidate_point_cloud = candidates[i].getPCLPointCloud();
 
-      tf2::Transform cur_icp_tf;
-      double score = this->scoreRegistration(candidate_point_cloud, object_point_cloud, cur_icp_tf);
-      if (score < min_score)
+    // quick check for a valid point cloud
+    if (!candidate_point_cloud->empty())
+    {
+      // do an average color check
+      if (fabs(object_r - candidates[i].getAverageRed()) <= object_std_dev_r / 1.5
+          && fabs(object_g - candidates[i].getAverageGreen()) <= object_std_dev_g / 1.5
+          && fabs(object_b - candidates[i].getAverageBlue()) <= object_std_dev_b / 1.5)
       {
-        min_score = score;
-        min_index = i;
-        min_icp_tf = cur_icp_tf;
+        tf2::Transform cur_icp_tf;
+        double score = this->scoreRegistration(candidate_point_cloud, object_point_cloud, cur_icp_tf);
+        if (score < min_score)
+        {
+          min_score = score;
+          min_index = i;
+          min_icp_tf = cur_icp_tf;
+        }
       }
     }
   }
@@ -134,9 +142,16 @@ double PointCloudRecognizer::scoreRegistration(pcl::PointCloud<pcl::PointXYZRGB>
   pcl::PointCloud<pcl::PointXYZRGB>::Ptr aligned(new pcl::PointCloud<pcl::PointXYZRGB>);
   tf_icp = point_cloud_metrics::performICP(candidate, object, aligned);
 
+  // check overlap first to determine if a the registration should be scored further
+  double overlap, color_error;
+  point_cloud_metrics::calculateRegistrationMetricOverlap(candidate, aligned, overlap, color_error);
+  if (overlap < OVERLAP_THRESHOLD)
+  {
+    return numeric_limits<double>::infinity();
+  }
+
   // calculate the distance and color error
   double distance_error = point_cloud_metrics::calculateRegistrationMetricDistanceError(candidate, aligned);
-  double color_error = point_cloud_metrics::calculateRegistrationMetricOverlap(candidate, aligned, true);
 
   // calculate the final weighted result
   double result = ALPHA * (3.0 * distance_error) + (1.0 - ALPHA) * (color_error / 100.0);
