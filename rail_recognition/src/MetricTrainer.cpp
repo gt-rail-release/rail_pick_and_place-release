@@ -23,7 +23,7 @@ using namespace rail::pick_and_place;
 MetricTrainer::MetricTrainer()
     : private_node_("~"), get_yes_and_no_feedback_ac_(private_node_, "get_yes_no_feedback", true),
       as_(private_node_, "train_metrics", boost::bind(&MetricTrainer::trainMetricsCallback,
-          this, _1), false)
+                                                      this, _1), false)
 {
   // set defaults
   int port = graspdb::Client::DEFAULT_PORT;
@@ -146,12 +146,9 @@ void MetricTrainer::trainMetricsCallback(const rail_pick_and_place_msgs::TrainMe
         get_yes_and_no_feedback_ac_.sendGoal(goal);
 
         // calculate all metrics
-        double m_o = point_cloud_metrics::calculateRegistrationMetricOverlap(base_pc, aligned_pc, false);
+        double m_o, m_c_err;
+        point_cloud_metrics::calculateRegistrationMetricOverlap(base_pc, aligned_pc, m_o, m_c_err);
         double m_d_err = point_cloud_metrics::calculateRegistrationMetricDistanceError(base_pc, aligned_pc);
-        double m_c_err = point_cloud_metrics::calculateRegistrationMetricOverlap(base_pc, aligned_pc, true);
-        double m_c_avg = point_cloud_metrics::calculateRegistrationMetricColorRange(base_pc, aligned_pc);
-        double m_c_dev = point_cloud_metrics::calculateRegistrationMetricStdDevColorRange(base_pc, aligned_pc);
-        double m_spread = point_cloud_metrics::calculateRegistrationMetricDistance(base_pc, aligned_pc);
 
         // wait for a response
         feedback.message = "Waiting for feedback on point clouds " + i_j_str + "...";
@@ -160,8 +157,7 @@ void MetricTrainer::trainMetricsCallback(const rail_pick_and_place_msgs::TrainMe
         string input = (get_yes_and_no_feedback_ac_.getResult()->yes) ? "y" : "n";
 
         // write the data to the file
-        output_file << m_o << "," << m_d_err << "," << m_c_err << "," << m_c_avg << "," << m_c_dev << "," << m_spread
-            << "," << input << endl;
+        output_file << m_o << "," << m_d_err << "," << m_c_err << "," << input << endl;
       }
     }
 
