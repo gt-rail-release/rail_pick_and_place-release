@@ -16,7 +16,14 @@
 // ROS
 #include <graspdb/graspdb.h>
 #include <rail_manipulation_msgs/SegmentedObjectList.h>
+#include <rail_pick_and_place_msgs/RemoveObject.h>
 #include <ros/ros.h>
+
+// PCL
+#include <pcl/filters/voxel_grid.h>
+
+// Boost
+#include <boost/thread/mutex.hpp>
 
 namespace rail
 {
@@ -35,6 +42,10 @@ class ObjectRecognitionListener
 public:
   /*! If a topic should be created to display debug information such as pose arrays. */
   static const bool DEFAULT_DEBUG = false;
+  /*! Leaf size of the voxel grid for downsampling. */
+  static const float DOWNSAMPLE_LEAF_SIZE = 0.01;
+  /*! The distance threshold for two point clouds being the same item. */
+  static const double SAME_OBJECT_DIST_THRESHOLD = 0.2;
 
   /*!
    * \brief Creates a new ObjectRecognitionListener.
@@ -81,10 +92,39 @@ private:
    */
   bool comparePointClouds(const sensor_msgs::PointCloud2 &pc1, const sensor_msgs::PointCloud2 &pc2) const;
 
+  /*!
+   * \brief Combine two models of the same type into a single model.
+   *
+   * Take the two segmented object models and combine them into a single model. This is useful for when a single
+   * object has mistakenly been split into two models.
+   *
+   * \param model1 The first object model.
+   * \param model2 The second object model.
+   * \param out The combined model to set.
+   */
+  void combineModels(const rail_manipulation_msgs::SegmentedObject &model1,
+      const rail_manipulation_msgs::SegmentedObject &model2, rail_manipulation_msgs::SegmentedObject &combined) const;
+
+  /*!
+   * \brief Callback for the remove object request.
+   *
+   * Remote the object from the segmented object list with a given ID. This will publish both an updated segmented
+   * object list.
+   *
+   * \param req The request with the index to use.
+   * \param res The empty response (unused).
+   * \return Returns true if a valid index was provided.
+   */
+  bool removeObjectCallback(rail_pick_and_place_msgs::RemoveObject::Request &req,
+      rail_pick_and_place_msgs::RemoveObject::Response &res);
+
   /*! The debug and okay check flags. */
   bool debug_, okay_;
   /*! The grasp database connection. */
   graspdb::Client *graspdb_;
+
+  /*! The main mutex for list modifications. */
+  boost::mutex mutex_;
 
   /*! The public and private ROS node handles. */
   ros::NodeHandle node_, private_node_;
@@ -92,6 +132,8 @@ private:
   ros::Subscriber segmented_objects_sub_;
   /*! The recognized objects and debug publishers. */
   ros::Publisher recognized_objects_pub_, debug_pub_;
+  /*! The remove object server. */
+  ros::ServiceServer remove_object_srv_;
   /*! The most recent segmented objects. */
   rail_manipulation_msgs::SegmentedObjectList object_list_;
 };
