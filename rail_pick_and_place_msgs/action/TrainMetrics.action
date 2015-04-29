@@ -1,8 +1,0 @@
-# Define the goal
-string object_name  # The name of the object
----
-# Define the result
-bool success        # If the training was successful
----
-# Define feedback message
-string message      # The current state message
