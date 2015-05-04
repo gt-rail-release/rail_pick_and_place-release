@@ -1,0 +1,12 @@
+Source: ros-jade-rail-pick-and-place
+Section: misc
+Priority: extra
+Maintainer: Russell Toris <rctoris@wpi.edu>
+Build-Depends: debhelper (>= 9.0.0), ros-jade-catkin
+Homepage: http://ros.org/wiki/rail_pick_and_place
+Standards-Version: 3.9.2
+
+Package: ros-jade-rail-pick-and-place
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-jade-graspdb, ros-jade-rail-grasp-collection, ros-jade-rail-pick-and-place-msgs, ros-jade-rail-pick-and-place-tools, ros-jade-rail-recognition
+Description: Grasp Training and Pick and Place Methods Developed by the RAIL Lab
