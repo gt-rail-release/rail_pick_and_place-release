@@ -1,0 +1,12 @@
+Source: ros-jade-rail-recognition
+Section: misc
+Priority: extra
+Maintainer: David Kent <davidkent@wpi.edu>
+Build-Depends: debhelper (>= 9.0.0), ros-jade-actionlib, ros-jade-catkin, ros-jade-geometry-msgs, ros-jade-graspdb, ros-jade-pcl-conversions, ros-jade-pcl-ros, ros-jade-rail-manipulation-msgs, ros-jade-rail-pick-and-place-msgs, ros-jade-roscpp, ros-jade-sensor-msgs, ros-jade-tf2
+Homepage: http://ros.org/wiki/rail_recognition
+Standards-Version: 3.9.2
+
+Package: ros-jade-rail-recognition
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-jade-actionlib, ros-jade-geometry-msgs, ros-jade-graspdb, ros-jade-pcl-conversions, ros-jade-pcl-ros, ros-jade-rail-manipulation-msgs, ros-jade-rail-pick-and-place-msgs, ros-jade-roscpp, ros-jade-sensor-msgs, ros-jade-tf2
+Description: Construction and Use of a Recognition Database for Grasping Purposes
