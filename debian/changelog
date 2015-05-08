@@ -1,0 +1,166 @@
+ros-jade-rail-recognition (1.1.7-0vivid) vivid; urgency=high
+
+  * Calculated new orientation of combined recognized objects
+  * Contributors: David Kent
+
+ -- David Kent <davidkent@wpi.edu>  Fri, 08 May 2015 04:00:00 -0000
+
+ros-jade-rail-recognition (1.1.6-0vivid) vivid; urgency=high
+
+  * added cleared flag
+  * Contributors: Russell Toris
+
+ -- David Kent <davidkent@wpi.edu>  Tue, 05 May 2015 04:00:00 -0000
+
+ros-jade-rail-recognition (1.1.5-0vivid) vivid; urgency=high
+
+  * Bugfix for running recognition on empty object lists
+  * Contributors: David Kent
+
+ -- David Kent <davidkent@wpi.edu>  Wed, 29 Apr 2015 04:00:00 -0000
+
+ros-jade-rail-recognition (1.1.4-0vivid) vivid; urgency=high
+
+  * weighted average of colors
+  * added doxygen
+  * bug fixes in point cloud merging
+  * Added remove object functionality for the recognized object list
+  * Combined close together objects of the same type into single objects
+  * Contributors: David Kent, Russell Toris
+  * changelog updated
+  * uses PCL models for generation
+  * cleanup of new stuff
+  * Recognition first performs a color check
+  * Recognition tuning
+  * added avg functions for color
+  * removed metric pre-compute
+  * stores metrics
+  * Contributors: David Kent, Russell Toris
+
+ -- David Kent <davidkent@wpi.edu>  Mon, 27 Apr 2015 04:00:00 -0000
+
+ros-jade-rail-recognition (1.1.3-0vivid) vivid; urgency=high
+
+  * uses PCL models for generation
+  * cleanup of new stuff
+  * Recognition first performs a color check
+  * Recognition tuning
+  * added avg functions for color
+  * removed metric pre-compute
+  * stores metrics
+  * Contributors: David Kent, Russell Toris
+
+ -- David Kent <davidkent@wpi.edu>  Tue, 14 Apr 2015 04:00:00 -0000
+
+ros-jade-rail-recognition (1.1.2-0vivid) vivid; urgency=high
+
+  * removed the swap check from recognition
+  * Merge branch 'develop' of github.com:WPI-RAIL/rail_pick_and_place into develop
+  * New decision tree for object models
+  * docs finished
+  * more docs
+  * new metric trainier
+  * Metric trainer filters point clouds first
+  * bug removed
+  * metric trainer addition
+  * Added metric data collection for decision tree training
+  * random selection added
+  * fixes segfaults in graph search
+  * graph search used
+  * Contributors: David Kent, Russell Toris
+
+ -- David Kent <davidkent@wpi.edu>  Fri, 10 Apr 2015 04:00:00 -0000
+
+ros-jade-rail-recognition (1.1.1-0vivid) vivid; urgency=high
+
+
+
+ -- David Kent <davidkent@wpi.edu>  Mon, 06 Apr 2015 04:00:00 -0000
+
+ros-jade-rail-recognition (1.1.0-0vivid) vivid; urgency=high
+
+  * new launch files
+  * grasp model retriever added
+  * general cleanup
+  * refactor of model generator
+  * major refactor of model generation
+  * adds vector for search
+  * more refactoring
+  * begin refactor of metrics
+  * Contributors: Russell Toris
+
+ -- David Kent <davidkent@wpi.edu>  Fri, 03 Apr 2015 04:00:00 -0000
+
+ros-jade-rail-recognition (1.0.4-0vivid) vivid; urgency=high
+
+  * orientation added
+  * Contributors: Russell Toris
+
+ -- David Kent <davidkent@wpi.edu>  Tue, 31 Mar 2015 04:00:00 -0000
+
+ros-jade-rail-recognition (1.0.3-0vivid) vivid; urgency=high
+
+  * debug is now latched
+  * checks for empty point cloud
+  * starting to cleanup model generator
+  * fix in launch
+  * refactor of point cloud recognizer
+  * added select all to database
+  * repub of recognized objects addedg
+  * Contributors: Russell Toris
+
+ -- David Kent <davidkent@wpi.edu>  Tue, 31 Mar 2015 04:00:00 -0000
+
+ros-jade-rail-recognition (1.0.2-0vivid) vivid; urgency=high
+
+
+
+ -- David Kent <davidkent@wpi.edu>  Mon, 30 Mar 2015 04:00:00 -0000
+
+ros-jade-rail-recognition (1.0.1-0vivid) vivid; urgency=high
+
+  * Removed some old code
+  * Contributors: David Kent
+
+ -- David Kent <davidkent@wpi.edu>  Fri, 27 Mar 2015 04:00:00 -0000
+
+ros-jade-rail-recognition (1.0.0-0vivid) vivid; urgency=high
+
+  * object recognition listener now checks if segmentation passes in updated information vs. new object information
+  * Moved actions from recognition to msgs
+  * Removed unused messages
+  * Message generation dependency
+  * Removed some unused imports
+  * Added a recognition listener that allows for shared recognition of a list of detected objects
+  * Removed some unused stuff from recognition
+  * Updated rail recognition to use the database, fixed a point cloud transform bug in grasp collection
+  * Updates to rviz panels
+  * Switched registration to use the graspdb, fixed point cloud selection in grasp collector
+  * Added a vision panel that can handle segmentation and recognition, minor documentation updates to other panels
+  * Moved rviz panels to rail_pick_and_place_tools, added an rviz panel for grasp collection
+  * Updated grasp requests to use stamped poses instead of base_footprint frame poses
+  * Switched model generation from a service to an action, and updated the rviz plugin so that it does not freeze during the model generation call
+  * Updated to reflect moving some messages from rail_segmentation to rail_manipulation_messages
+  * rviz plugin launch/install, new models, and some general cleanup
+  * Rviz plugin updates
+  * Initial rviz plugin for model generation
+  * Contributors: David Kent
+
+ -- David Kent <davidkent@wpi.edu>  Fri, 27 Mar 2015 04:00:00 -0000
+
+ros-jade-rail-recognition (0.0.2-0vivid) vivid; urgency=high
+
+  * catkin cleanup
+  * Updated metapackage
+  * Grasp collection, model building, basic recognition and grasping
+  * Contributors: David Kent, Russell Toris
+
+ -- David Kent <davidkent@wpi.edu>  Wed, 18 Feb 2015 05:00:00 -0000
+
+ros-jade-rail-recognition (0.0.1-0vivid) vivid; urgency=high
+
+
+
+ -- David Kent <davidkent@wpi.edu>  Wed, 22 Oct 2014 04:00:00 -0000
+
+
