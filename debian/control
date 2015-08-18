@@ -1,0 +1,12 @@
+Source: ros-indigo-rail-grasp-collection
+Section: misc
+Priority: extra
+Maintainer: Russell Toris <rctoris@wpi.edu>
+Build-Depends: debhelper (>= 9.0.0), libboost-all-dev, ros-indigo-actionlib, ros-indigo-catkin, ros-indigo-geometry-msgs, ros-indigo-graspdb, ros-indigo-rail-manipulation-msgs, ros-indigo-rail-pick-and-place-msgs, ros-indigo-roscpp, ros-indigo-sensor-msgs, ros-indigo-tf2-ros, ros-indigo-tf2-sensor-msgs
+Homepage: http://ros.org/wiki/rail_grasp_collection
+Standards-Version: 3.9.2
+
+Package: ros-indigo-rail-grasp-collection
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libboost-all-dev, ros-indigo-actionlib, ros-indigo-geometry-msgs, ros-indigo-graspdb, ros-indigo-rail-manipulation-msgs, ros-indigo-rail-pick-and-place-msgs, ros-indigo-roscpp, ros-indigo-sensor-msgs, ros-indigo-tf2-ros, ros-indigo-tf2-sensor-msgs
+Description: Grasp Collection for Constructing a Grasping and Recognition Database
