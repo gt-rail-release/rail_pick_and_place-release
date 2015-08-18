@@ -1,0 +1,103 @@
+ros-indigo-rail-pick-and-place (1.1.8-0saucy) saucy; urgency=high
+
+
+
+ -- Russell Toris <rctoris@wpi.edu>  Tue, 18 Aug 2015 04:00:00 -0000
+
+ros-indigo-rail-pick-and-place (1.1.7-0saucy) saucy; urgency=high
+
+
+
+ -- Russell Toris <rctoris@wpi.edu>  Fri, 08 May 2015 04:00:00 -0000
+
+ros-indigo-rail-pick-and-place (1.1.6-0saucy) saucy; urgency=high
+
+
+
+ -- Russell Toris <rctoris@wpi.edu>  Tue, 05 May 2015 04:00:00 -0000
+
+ros-indigo-rail-pick-and-place (1.1.5-0saucy) saucy; urgency=high
+
+
+
+ -- Russell Toris <rctoris@wpi.edu>  Wed, 29 Apr 2015 04:00:00 -0000
+
+ros-indigo-rail-pick-and-place (1.1.4-0saucy) saucy; urgency=high
+
+  * changelog updated
+  * Contributors: Russell Toris
+
+ -- Russell Toris <rctoris@wpi.edu>  Mon, 27 Apr 2015 04:00:00 -0000
+
+ros-indigo-rail-pick-and-place (1.1.3-0saucy) saucy; urgency=high
+
+
+
+ -- Russell Toris <rctoris@wpi.edu>  Tue, 14 Apr 2015 04:00:00 -0000
+
+ros-indigo-rail-pick-and-place (1.1.2-0saucy) saucy; urgency=high
+
+
+
+ -- Russell Toris <rctoris@wpi.edu>  Fri, 10 Apr 2015 04:00:00 -0000
+
+ros-indigo-rail-pick-and-place (1.1.1-0saucy) saucy; urgency=high
+
+
+
+ -- Russell Toris <rctoris@wpi.edu>  Mon, 06 Apr 2015 04:00:00 -0000
+
+ros-indigo-rail-pick-and-place (1.1.0-0saucy) saucy; urgency=high
+
+
+
+ -- Russell Toris <rctoris@wpi.edu>  Fri, 03 Apr 2015 04:00:00 -0000
+
+ros-indigo-rail-pick-and-place (1.0.4-0saucy) saucy; urgency=high
+
+
+
+ -- Russell Toris <rctoris@wpi.edu>  Tue, 31 Mar 2015 04:00:00 -0000
+
+ros-indigo-rail-pick-and-place (1.0.3-0saucy) saucy; urgency=high
+
+
+
+ -- Russell Toris <rctoris@wpi.edu>  Tue, 31 Mar 2015 04:00:00 -0000
+
+ros-indigo-rail-pick-and-place (1.0.2-0saucy) saucy; urgency=high
+
+
+
+ -- Russell Toris <rctoris@wpi.edu>  Mon, 30 Mar 2015 04:00:00 -0000
+
+ros-indigo-rail-pick-and-place (1.0.1-0saucy) saucy; urgency=high
+
+
+
+ -- Russell Toris <rctoris@wpi.edu>  Fri, 27 Mar 2015 04:00:00 -0000
+
+ros-indigo-rail-pick-and-place (1.0.0-0saucy) saucy; urgency=high
+
+  * minor cleanup
+  * Moved rviz panels to rail_pick_and_place_tools, added an rviz panel for grasp collection
+  * Contributors: David Kent, Russell Toris
+
+ -- Russell Toris <rctoris@wpi.edu>  Fri, 27 Mar 2015 04:00:00 -0000
+
+ros-indigo-rail-pick-and-place (0.0.2-0saucy) saucy; urgency=high
+
+  * Updated metapackage
+  * Contributors: David Kent
+
+ -- David Kent <davidkent@wpi.edu>  Wed, 18 Feb 2015 05:00:00 -0000
+
+ros-indigo-rail-pick-and-place (0.0.1-0saucy) saucy; urgency=high
+
+  * prep for release
+  * Initial commit
+  * Contributors: David Kent, Russell Toris
+
+ -- David Kent <davidkent@wpi.edu>  Wed, 22 Oct 2014 04:00:00 -0000
+
+
