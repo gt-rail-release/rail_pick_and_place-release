@@ -1,0 +1,157 @@
+ros-jade-rail-grasp-collection (1.1.9-0vivid) vivid; urgency=high
+
+  * Update package.xml
+  * Contributors: David Kent
+
+ -- Russell Toris <rctoris@wpi.edu>  Tue, 23 Feb 2016 05:00:00 -0000
+
+ros-jade-rail-grasp-collection (1.1.8-0vivid) vivid; urgency=high
+
+
+
+ -- Russell Toris <rctoris@wpi.edu>  Tue, 18 Aug 2015 04:00:00 -0000
+
+ros-jade-rail-grasp-collection (1.1.7-0vivid) vivid; urgency=high
+
+
+
+ -- Russell Toris <rctoris@wpi.edu>  Fri, 08 May 2015 04:00:00 -0000
+
+ros-jade-rail-grasp-collection (1.1.6-0vivid) vivid; urgency=high
+
+
+
+ -- Russell Toris <rctoris@wpi.edu>  Tue, 05 May 2015 04:00:00 -0000
+
+ros-jade-rail-grasp-collection (1.1.5-0vivid) vivid; urgency=high
+
+
+
+ -- Russell Toris <rctoris@wpi.edu>  Wed, 29 Apr 2015 04:00:00 -0000
+
+ros-jade-rail-grasp-collection (1.1.4-0vivid) vivid; urgency=high
+
+  * changelog updated
+  * added segmented images to the database
+  * Contributors: Russell Toris
+
+ -- Russell Toris <rctoris@wpi.edu>  Mon, 27 Apr 2015 04:00:00 -0000
+
+ros-jade-rail-grasp-collection (1.1.3-0vivid) vivid; urgency=high
+
+  * added segmented images to the database
+  * Contributors: Russell Toris
+
+ -- Russell Toris <rctoris@wpi.edu>  Tue, 14 Apr 2015 04:00:00 -0000
+
+ros-jade-rail-grasp-collection (1.1.2-0vivid) vivid; urgency=high
+
+  * graph search used
+  * Contributors: Russell Toris
+
+ -- Russell Toris <rctoris@wpi.edu>  Fri, 10 Apr 2015 04:00:00 -0000
+
+ros-jade-rail-grasp-collection (1.1.1-0vivid) vivid; urgency=high
+
+
+
+ -- Russell Toris <rctoris@wpi.edu>  Mon, 06 Apr 2015 04:00:00 -0000
+
+ros-jade-rail-grasp-collection (1.1.0-0vivid) vivid; urgency=high
+
+  * new launch files
+  * header cleanup
+  * moved to ptr based storage
+  * begin refactor of metrics
+  * Contributors: Russell Toris
+
+ -- Russell Toris <rctoris@wpi.edu>  Fri, 03 Apr 2015 04:00:00 -0000
+
+ros-jade-rail-grasp-collection (1.0.4-0vivid) vivid; urgency=high
+
+
+
+ -- Russell Toris <rctoris@wpi.edu>  Tue, 31 Mar 2015 04:00:00 -0000
+
+ros-jade-rail-grasp-collection (1.0.3-0vivid) vivid; urgency=high
+
+  * debug is now latched
+  * starting to cleanup model generator
+  * Contributors: Russell Toris
+
+ -- Russell Toris <rctoris@wpi.edu>  Tue, 31 Mar 2015 04:00:00 -0000
+
+ros-jade-rail-grasp-collection (1.0.2-0vivid) vivid; urgency=high
+
+
+
+ -- Russell Toris <rctoris@wpi.edu>  Mon, 30 Mar 2015 04:00:00 -0000
+
+ros-jade-rail-grasp-collection (1.0.1-0vivid) vivid; urgency=high
+
+
+
+ -- Russell Toris <rctoris@wpi.edu>  Fri, 27 Mar 2015 04:00:00 -0000
+
+ros-jade-rail-grasp-collection (1.0.0-0vivid) vivid; urgency=high
+
+  * minor cleanup
+  * small fix
+  * Updated rail recognition to use the database, fixed a point cloud transform bug in grasp collection
+  * Switched registration to use the graspdb, fixed point cloud selection in grasp collector
+  * minor bug fixes
+  * include cleanup
+  * fixed default link
+  * global database params
+  * load functions for grasp models
+  * add grasp added
+  * ID returned from add
+  * major refactor
+  * virtual added to destructor
+  * model added
+  * Moved rviz panels to rail_pick_and_place_tools, added an rviz panel for grasp collection
+  * typo
+  * adds back private node handle
+  * removes unused members
+  * bug fixes after initial testing
+  * small edits
+  * small edits
+  * merge conflict
+  * allow for copy of client
+  * get array of objects based on object name
+  * extract from database added for demonstrations
+  * Updated to reflect moving some messages from rail_segmentation to rail_manipulation_messages
+  * added node to load and publish grasps
+  * Updated to use the new rail_manipulation_msgs
+  * travis fix
+  * missing dep
+  * minor edits
+  * added param for segmented object topic
+  * launch file added
+  * added mutex for list
+  * more comments
+  * first pass of new collector
+  * consty const const const
+  * insert grasp added
+  * graspdb started (creates tables)
+  * all but storing in the SQL database redone for grasp collection
+  * Contributors: David Kent, Russell Toris
+
+ -- Russell Toris <rctoris@wpi.edu>  Fri, 27 Mar 2015 04:00:00 -0000
+
+ros-jade-rail-grasp-collection (0.0.2-0vivid) vivid; urgency=high
+
+  * catkin cleanup
+  * Updated metapackage
+  * Grasp collection, model building, basic recognition and grasping
+  * Contributors: David Kent, Russell Toris
+
+ -- Russell Toris <rctoris@wpi.edu>  Wed, 18 Feb 2015 05:00:00 -0000
+
+ros-jade-rail-grasp-collection (0.0.1-0vivid) vivid; urgency=high
+
+
+
+ -- Russell Toris <rctoris@wpi.edu>  Wed, 22 Oct 2014 04:00:00 -0000
+
+
