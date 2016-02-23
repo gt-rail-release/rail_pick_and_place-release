@@ -1,0 +1,12 @@
+Source: ros-indigo-rail-pick-and-place-msgs
+Section: misc
+Priority: extra
+Maintainer: David Kent <dekent@gatech.edu>
+Build-Depends: debhelper (>= 9.0.0), ros-indigo-actionlib-msgs, ros-indigo-catkin, ros-indigo-geometry-msgs, ros-indigo-message-generation, ros-indigo-rail-manipulation-msgs, ros-indigo-sensor-msgs
+Homepage: http://ros.org/wiki/rail_pick_and_place_msgs
+Standards-Version: 3.9.2
+
+Package: ros-indigo-rail-pick-and-place-msgs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-indigo-actionlib-msgs, ros-indigo-geometry-msgs, ros-indigo-message-runtime, ros-indigo-rail-manipulation-msgs, ros-indigo-sensor-msgs
+Description: Messages and Services for RAIL Pick and Place
