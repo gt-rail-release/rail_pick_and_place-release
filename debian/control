@@ -1,0 +1,12 @@
+Source: ros-indigo-rail-pick-and-place-tools
+Section: misc
+Priority: extra
+Maintainer: David Kent <dekent@gatech.edu>
+Build-Depends: debhelper (>= 9.0.0), libboost-all-dev, ros-indigo-actionlib, ros-indigo-catkin, ros-indigo-graspdb, ros-indigo-rail-pick-and-place-msgs, ros-indigo-roscpp, ros-indigo-rviz, ros-indigo-std-srvs
+Homepage: http://ros.org/wiki/rail_pick_and_place_tools
+Standards-Version: 3.9.2
+
+Package: ros-indigo-rail-pick-and-place-tools
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libboost-all-dev, ros-indigo-actionlib, ros-indigo-graspdb, ros-indigo-rail-grasp-collection, ros-indigo-rail-pick-and-place-msgs, ros-indigo-rail-recognition, ros-indigo-roscpp, ros-indigo-rviz, ros-indigo-std-srvs
+Description: RViz Plugins for Collecting Grasps and Generating Models
