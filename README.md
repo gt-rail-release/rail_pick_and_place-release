@@ -1,3 +1,30 @@
+## rail_pick_and_place (indigo) - 1.1.8-1
+
+The packages in the `rail_pick_and_place` repository were released into the `indigo` distro by running `/usr/bin/bloom-release rail_pick_and_place --track indigo --rosdistro indigo` on `Tue, 23 Feb 2016 19:19:05 -0000`
+
+These packages were released:
+- `graspdb`
+- `rail_grasp_collection`
+- `rail_pick_and_place`
+- `rail_pick_and_place_msgs`
+- `rail_pick_and_place_tools`
+- `rail_recognition`
+
+Version of package(s) in repository `rail_pick_and_place`:
+- upstream repository: https://github.com/WPI-RAIL/rail_pick_and_place.git
+- release repository: https://github.com/gt-rail-release/rail_pick_and_place-release.git
+- rosdistro version: `1.1.7-0`
+- old version: `1.1.8-0`
+- new version: `1.1.8-1`
+
+Versions of tools used:
+- bloom version: `0.5.20`
+- catkin_pkg version: `0.2.10`
+- rosdep version: `0.11.4`
+- rosdistro version: `0.4.4`
+- vcstools version: `0.1.38`
+
+
 ## rail_pick_and_place (jade) - 1.1.8-0
 
 The packages in the `rail_pick_and_place` repository were released into the `jade` distro by running `/usr/bin/bloom-release --rosdistro jade --track jade rail_pick_and_place` on `Tue, 18 Aug 2015 14:09:09 -0000`
