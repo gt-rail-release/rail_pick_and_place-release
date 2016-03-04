@@ -11,7 +11,7 @@ These packages were released:
 - `rail_recognition`
 
 Version of package(s) in repository `rail_pick_and_place`:
-- upstream repository: https://github.com/WPI-RAIL/rail_pick_and_place.git
+- upstream repository: https://github.com/GT-RAIL/rail_pick_and_place.git
 - release repository: https://github.com/gt-rail-release/rail_pick_and_place-release.git
 - rosdistro version: `1.1.7-0`
 - old version: `1.1.8-0`
@@ -38,7 +38,7 @@ These packages were released:
 - `rail_recognition`
 
 Version of package(s) in repository `rail_pick_and_place`:
-- upstream repository: https://github.com/WPI-RAIL/rail_pick_and_place.git
+- upstream repository: https://github.com/GT-RAIL/rail_pick_and_place.git
 - release repository: https://github.com/gt-rail-release/rail_pick_and_place-release.git
 - rosdistro version: `1.1.7-0`
 - old version: `1.1.8-1`
@@ -65,7 +65,7 @@ These packages were released:
 - `rail_recognition`
 
 Version of package(s) in repository `rail_pick_and_place`:
-- upstream repository: https://github.com/WPI-RAIL/rail_pick_and_place.git
+- upstream repository: https://github.com/GT-RAIL/rail_pick_and_place.git
 - release repository: https://github.com/gt-rail-release/rail_pick_and_place-release.git
 - rosdistro version: `1.1.7-0`
 - old version: `1.1.8-0`
@@ -92,8 +92,8 @@ These packages were released:
 - `rail_recognition`
 
 Version of package(s) in repository `rail_pick_and_place`:
-- upstream repository: https://github.com/WPI-RAIL/rail_pick_and_place.git
-- release repository: https://github.com/wpi-rail-release/rail_pick_and_place-release.git
+- upstream repository: https://github.com/GT-RAIL/rail_pick_and_place.git
+- release repository: https://github.com/gt-rail-release/rail_pick_and_place-release.git
 - rosdistro version: `1.1.7-0`
 - old version: `1.1.7-0`
 - new version: `1.1.8-0`
@@ -119,8 +119,8 @@ These packages were released:
 - `rail_recognition`
 
 Version of package(s) in repository `rail_pick_and_place`:
-- upstream repository: https://github.com/WPI-RAIL/rail_pick_and_place.git
-- release repository: https://github.com/wpi-rail-release/rail_pick_and_place-release.git
+- upstream repository: https://github.com/GT-RAIL/rail_pick_and_place.git
+- release repository: https://github.com/gt-rail-release/rail_pick_and_place-release.git
 - rosdistro version: `1.1.7-0`
 - old version: `1.1.7-1`
 - new version: `1.1.8-0`
@@ -146,8 +146,8 @@ These packages were released:
 - `rail_recognition`
 
 Version of package(s) in repository `rail_pick_and_place`:
-- upstream repository: https://github.com/WPI-RAIL/rail_pick_and_place.git
-- release repository: https://github.com/wpi-rail-release/rail_pick_and_place-release.git
+- upstream repository: https://github.com/GT-RAIL/rail_pick_and_place.git
+- release repository: https://github.com/gt-rail-release/rail_pick_and_place-release.git
 - rosdistro version: `1.1.7-0`
 - old version: `1.1.7-0`
 - new version: `1.1.7-1`
@@ -173,8 +173,8 @@ These packages were released:
 - `rail_recognition`
 
 Version of package(s) in repository `rail_pick_and_place`:
-- upstream repository: https://github.com/WPI-RAIL/rail_pick_and_place.git
-- release repository: https://github.com/wpi-rail-release/rail_pick_and_place-release.git
+- upstream repository: https://github.com/GT-RAIL/rail_pick_and_place.git
+- release repository: https://github.com/gt-rail-release/rail_pick_and_place-release.git
 - rosdistro version: `1.1.6-0`
 - old version: `1.1.6-0`
 - new version: `1.1.7-0`
@@ -200,8 +200,8 @@ These packages were released:
 - `rail_recognition`
 
 Version of package(s) in repository `rail_pick_and_place`:
-- upstream repository: https://github.com/WPI-RAIL/rail_pick_and_place.git
-- release repository: https://github.com/wpi-rail-release/rail_pick_and_place-release.git
+- upstream repository: https://github.com/GT-RAIL/rail_pick_and_place.git
+- release repository: https://github.com/gt-rail-release/rail_pick_and_place-release.git
 - rosdistro version: `1.1.6-0`
 - old version: `1.1.6-0`
 - new version: `1.1.7-0`
@@ -227,8 +227,8 @@ These packages were released:
 - `rail_recognition`
 
 Version of package(s) in repository `rail_pick_and_place`:
-- upstream repository: https://github.com/WPI-RAIL/rail_pick_and_place.git
-- release repository: https://github.com/wpi-rail-release/rail_pick_and_place-release.git
+- upstream repository: https://github.com/GT-RAIL/rail_pick_and_place.git
+- release repository: https://github.com/gt-rail-release/rail_pick_and_place-release.git
 - rosdistro version: `1.1.5-0`
 - old version: `1.1.5-0`
 - new version: `1.1.6-0`
@@ -254,8 +254,8 @@ These packages were released:
 - `rail_recognition`
 
 Version of package(s) in repository `rail_pick_and_place`:
-- upstream repository: https://github.com/WPI-RAIL/rail_pick_and_place.git
-- release repository: https://github.com/wpi-rail-release/rail_pick_and_place-release.git
+- upstream repository: https://github.com/GT-RAIL/rail_pick_and_place.git
+- release repository: https://github.com/gt-rail-release/rail_pick_and_place-release.git
 - rosdistro version: `1.1.5-0`
 - old version: `1.1.5-0`
 - new version: `1.1.6-0`
@@ -281,7 +281,7 @@ These packages were released:
 - `rail_recognition`
 
 Version of package(s) in repository `rail_pick_and_place`:
-- upstream repository: https://github.com/WPI-RAIL/rail_pick_and_place.git
+- upstream repository: https://github.com/GT-RAIL/rail_pick_and_place.git
 - release repository: unknown
 - rosdistro version: `null`
 - old version: `null`
@@ -308,8 +308,8 @@ These packages were released:
 - `rail_recognition`
 
 Version of package(s) in repository `rail_pick_and_place`:
-- upstream repository: https://github.com/WPI-RAIL/rail_pick_and_place.git
-- release repository: https://github.com/wpi-rail-release/rail_pick_and_place-release.git
+- upstream repository: https://github.com/GT-RAIL/rail_pick_and_place.git
+- release repository: https://github.com/gt-rail-release/rail_pick_and_place-release.git
 - rosdistro version: `1.1.4-0`
 - old version: `1.1.4-0`
 - new version: `1.1.5-0`
@@ -335,8 +335,8 @@ These packages were released:
 - `rail_recognition`
 
 Version of package(s) in repository `rail_pick_and_place`:
-- upstream repository: https://github.com/WPI-RAIL/rail_pick_and_place.git
-- release repository: https://github.com/wpi-rail-release/rail_pick_and_place-release.git
+- upstream repository: https://github.com/GT-RAIL/rail_pick_and_place.git
+- release repository: https://github.com/gt-rail-release/rail_pick_and_place-release.git
 - rosdistro version: `1.1.3-0`
 - old version: `1.1.3-0`
 - new version: `1.1.4-0`
@@ -362,8 +362,8 @@ These packages were released:
 - `rail_recognition`
 
 Version of package(s) in repository `rail_pick_and_place`:
-- upstream repository: https://github.com/WPI-RAIL/rail_pick_and_place.git
-- release repository: https://github.com/wpi-rail-release/rail_pick_and_place-release.git
+- upstream repository: https://github.com/GT-RAIL/rail_pick_and_place.git
+- release repository: https://github.com/gt-rail-release/rail_pick_and_place-release.git
 - rosdistro version: `1.1.2-0`
 - old version: `1.1.2-0`
 - new version: `1.1.3-0`
@@ -389,8 +389,8 @@ These packages were released:
 - `rail_recognition`
 
 Version of package(s) in repository `rail_pick_and_place`:
-- upstream repository: https://github.com/WPI-RAIL/rail_pick_and_place.git
-- release repository: https://github.com/wpi-rail-release/rail_pick_and_place-release.git
+- upstream repository: https://github.com/GT-RAIL/rail_pick_and_place.git
+- release repository: https://github.com/gt-rail-release/rail_pick_and_place-release.git
 - rosdistro version: `1.1.1-0`
 - old version: `1.1.1-0`
 - new version: `1.1.2-0`
@@ -416,8 +416,8 @@ These packages were released:
 - `rail_recognition`
 
 Version of package(s) in repository `rail_pick_and_place`:
-- upstream repository: https://github.com/WPI-RAIL/rail_pick_and_place.git
-- release repository: https://github.com/wpi-rail-release/rail_pick_and_place-release.git
+- upstream repository: https://github.com/GT-RAIL/rail_pick_and_place.git
+- release repository: https://github.com/gt-rail-release/rail_pick_and_place-release.git
 - rosdistro version: `1.1.0-0`
 - old version: `1.1.0-0`
 - new version: `1.1.1-0`
@@ -443,8 +443,8 @@ These packages were released:
 - `rail_recognition`
 
 Version of package(s) in repository `rail_pick_and_place`:
-- upstream repository: https://github.com/WPI-RAIL/rail_pick_and_place.git
-- release repository: https://github.com/wpi-rail-release/rail_pick_and_place-release.git
+- upstream repository: https://github.com/GT-RAIL/rail_pick_and_place.git
+- release repository: https://github.com/gt-rail-release/rail_pick_and_place-release.git
 - rosdistro version: `1.0.4-0`
 - old version: `1.0.4-0`
 - new version: `1.1.0-0`
@@ -470,8 +470,8 @@ These packages were released:
 - `rail_recognition`
 
 Version of package(s) in repository `rail_pick_and_place`:
-- upstream repository: https://github.com/WPI-RAIL/rail_pick_and_place.git
-- release repository: https://github.com/wpi-rail-release/rail_pick_and_place-release.git
+- upstream repository: https://github.com/GT-RAIL/rail_pick_and_place.git
+- release repository: https://github.com/gt-rail-release/rail_pick_and_place-release.git
 - rosdistro version: `1.0.3-0`
 - old version: `1.0.3-0`
 - new version: `1.0.4-0`
@@ -497,8 +497,8 @@ These packages were released:
 - `rail_recognition`
 
 Version of package(s) in repository `rail_pick_and_place`:
-- upstream repository: https://github.com/WPI-RAIL/rail_pick_and_place.git
-- release repository: https://github.com/wpi-rail-release/rail_pick_and_place-release.git
+- upstream repository: https://github.com/GT-RAIL/rail_pick_and_place.git
+- release repository: https://github.com/gt-rail-release/rail_pick_and_place-release.git
 - rosdistro version: `1.0.2-0`
 - old version: `1.0.2-0`
 - new version: `1.0.3-0`
@@ -524,8 +524,8 @@ These packages were released:
 - `rail_recognition`
 
 Version of package(s) in repository `rail_pick_and_place`:
-- upstream repository: https://github.com/WPI-RAIL/rail_pick_and_place.git
-- release repository: https://github.com/wpi-rail-release/rail_pick_and_place-release.git
+- upstream repository: https://github.com/GT-RAIL/rail_pick_and_place.git
+- release repository: https://github.com/gt-rail-release/rail_pick_and_place-release.git
 - rosdistro version: `1.0.1-0`
 - old version: `1.0.1-0`
 - new version: `1.0.2-0`
@@ -551,8 +551,8 @@ These packages were released:
 - `rail_recognition`
 
 Version of package(s) in repository `rail_pick_and_place`:
-- upstream repository: https://github.com/WPI-RAIL/rail_pick_and_place.git
-- release repository: https://github.com/wpi-rail-release/rail_pick_and_place-release.git
+- upstream repository: https://github.com/GT-RAIL/rail_pick_and_place.git
+- release repository: https://github.com/gt-rail-release/rail_pick_and_place-release.git
 - rosdistro version: `1.0.0-0`
 - old version: `1.0.0-0`
 - new version: `1.0.1-0`
@@ -578,8 +578,8 @@ These packages were released:
 - `rail_recognition`
 
 Version of package(s) in repository `rail_pick_and_place`:
-- upstream repository: https://github.com/WPI-RAIL/rail_pick_and_place.git
-- release repository: https://github.com/wpi-rail-release/rail_pick_and_place-release.git
+- upstream repository: https://github.com/GT-RAIL/rail_pick_and_place.git
+- release repository: https://github.com/gt-rail-release/rail_pick_and_place-release.git
 - rosdistro version: `0.0.2-0`
 - old version: `0.0.2-0`
 - new version: `1.0.0-0`
@@ -605,8 +605,8 @@ These packages were released:
 - `rail_recognition`
 
 Version of package(s) in repository `rail_pick_and_place`:
-- upstream repository: https://github.com/WPI-RAIL/rail_pick_and_place.git
-- release repository: https://github.com/wpi-rail-release/rail_pick_and_place-release.git
+- upstream repository: https://github.com/GT-RAIL/rail_pick_and_place.git
+- release repository: https://github.com/gt-rail-release/rail_pick_and_place-release.git
 - rosdistro version: `0.0.1-0`
 - old version: `0.0.1-0`
 - new version: `0.0.2-0`
@@ -628,7 +628,7 @@ These packages were released:
 - `rail_pick_and_place_msgs`
 
 Version of package(s) in repository `rail_pick_and_place`:
-- upstream repository: https://github.com/WPI-RAIL/rail_pick_and_place.git
+- upstream repository: https://github.com/GT-RAIL/rail_pick_and_place.git
 - release repository: unknown
 - rosdistro version: `null`
 - old version: `null`
